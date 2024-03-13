@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DummySpringCloud/DummyClient/DummyClient.iml" filepath="$PROJECT_DIR$/DummySpringCloud/DummyClient/DummyClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DummySpringCloud/DummyServer/DummyServer.iml" filepath="$PROJECT_DIR$/DummySpringCloud/DummyServer/DummyServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DummySpringCloud/DummySpringCloud.iml" filepath="$PROJECT_DIR$/DummySpringCloud/DummySpringCloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Dummy_Spring_Cloud.iml" filepath="$PROJECT_DIR$/.idea/Dummy_Spring_Cloud.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="DummyClient" />
+        <module name="DummySpringCloud" />
+        <module name="DummyServer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="DummyClient" target="21" />
+      <module name="DummyServer" target="21" />
+      <module name="DummySpringCloud" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="DummyClient" options="-parameters" />
+      <module name="DummyServer" options="-parameters" />
+      <module name="DummySpringCloud" options="" />
+    </option>
+  </component>
+</project>
