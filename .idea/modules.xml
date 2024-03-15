@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DummySpringCloud/DummyClient/DummyClient.iml" filepath="$PROJECT_DIR$/DummySpringCloud/DummyClient/DummyClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/DummySpringCloud/DummyServer/DummyDiscovery.iml" filepath="$PROJECT_DIR$/DummySpringCloud/DummyServer/DummyDiscovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DummySpringCloud/DummyDiscovery/DummyServer.iml" filepath="$PROJECT_DIR$/DummySpringCloud/DummyDiscovery/DummyServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/DummySpringCloud/DummySpringCloud.iml" filepath="$PROJECT_DIR$/DummySpringCloud/DummySpringCloud.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Dummy_Spring_Cloud.iml" filepath="$PROJECT_DIR$/.idea/Dummy_Spring_Cloud.iml" />
     </modules>
