@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: DummyClient
+  main:
+    banner-mode: "off"
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dummy_discovery:8761/eureka/

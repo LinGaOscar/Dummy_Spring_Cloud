@@ -1,0 +1,14 @@
+version: "3"
+services:
+  dummy_discovery:
+    image: your_registry/dummy_discovery:latest
+    ports:
+      - "8761:8761" #inside : outside
+  dummy_client:
+    image: your_registry/dummy_client:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - EUREKA_SERVER_URL=http://dummy_discovery:8761/eureka
+    depends_on:
+      - dummy_discovery
