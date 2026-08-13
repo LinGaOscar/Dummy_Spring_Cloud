@@ -51,19 +51,18 @@ open http://localhost:8761
 
 ### 方式二：使用 Maven 直接啟動
 
+> 注意：`mvnw` 只存在於 `DummyDiscovery/` 與 `DummyClient/` 各自目錄下，父目錄 `DummySpringCloud/` 沒有自己的 wrapper，需在各模組目錄內用 `./mvnw`（而非 `../mvnw`）執行。
+>
+> 另外 `DummyClient` 的 `eureka.client.service-url.defaultZone` 寫死為 `http://dummy_discovery:8761/eureka/`，這個 hostname 只有在 Podman/Docker Compose 網路內才能被解析。直接用 Maven 在本機各自啟動兩個服務時，`dummy_discovery` 這個主機名無法解析，Client 會註冊失敗並持續重試；需自行在 `/etc/hosts` 加上 `127.0.0.1 dummy_discovery`，或用 `-Deureka.client.service-url.defaultZone=http://localhost:8761/eureka/` 覆寫。
+
 ```bash
-cd DummySpringCloud
-
 # 先啟動 Discovery
-cd DummyDiscovery
-../mvnw spring-boot:run
+cd DummySpringCloud/DummyDiscovery
+./mvnw spring-boot:run
 
-# 再啟動 Client（新開一個終端）
-cd DummyClient
-../mvnw spring-boot:run
-
-# 或指定 port 運行
-../mvnw spring-boot:run -Dspring-boot.run.arguments="--server.port=8080"
+# 再啟動 Client（新開一個終端，需先處理上方的 hostname 問題）
+cd DummySpringCloud/DummyClient
+./mvnw spring-boot:run -Deureka.client.service-url.defaultZone=http://localhost:8761/eureka/
 ```
 
 ### 方式三：使用 IDE
@@ -81,17 +80,19 @@ cd DummyClient
 
 ## Docker 建置（可選）
 
-如要自行建置 Image，需修改 `podman-compose.yaml` 中的 `image` 路徑：
+repo 目前**沒有附 Dockerfile**，`podman-compose.yaml` 裡的 image（`your_registry/dummy_discovery:latest`、`your_registry/dummy_client:latest`）僅為佔位路徑。要用「方式一」跑起來，需自行為兩個模組各寫一支 Dockerfile 再建置，例如：
 
 ```bash
-# 建置 Discovery Image
+# 建置 Discovery Image（需自備 Dockerfile）
 cd DummySpringCloud/DummyDiscovery
 docker build -t your_registry/dummy_discovery:latest .
 
-# 建置 Client Image
+# 建置 Client Image（需自備 Dockerfile）
 cd DummySpringCloud/DummyClient
 docker build -t your_registry/dummy_client:latest .
 ```
+
+另外 `podman-compose.yaml` 中 `dummy_client` 服務設定的環境變數 `EUREKA_SERVER_URL` 目前不會生效——程式碼實際讀取的屬性是 `eureka.client.service-url.defaultZone`（寫死在 `application.yml`），不是 `EUREKA_SERVER_URL`，兩者對不上。若要讓 compose 也能覆寫 Eureka 位址，需把環境變數改名為 `EUREKA_CLIENT_SERVICEURL_DEFAULTZONE`。
 
 ## 學習重點
 
